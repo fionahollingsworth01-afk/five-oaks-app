@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The World of Five Oaks</title>
+<style>
+:root{
+  --night:#120d0a;
+  --brown:#26180f;
+  --wood:#5b351d;
+  --paper:#f1dfbd;
+  --ink:#2a1a10;
+  --gold:#d59a3d;
+  --cream:#f8ead0;
+  --green:#33422b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Georgia, "Times New Roman", serif;
+  background:linear-gradient(#100b08,#21150d);
+  color:var(--cream);
+}
+.hero{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(10,6,3,.30), rgba(10,6,3,.82)),
+    url("five-oaks-home-background.png");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 28px;
+  background:rgba(18,13,10,.55);
+  backdrop-filter:blur(4px);
+}
+.brand{
+  font-size:22px;
+  font-weight:bold;
+  letter-spacing:.5px;
+}
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.nav button{
+  border:1px solid rgba(248,234,208,.55);
+  background:rgba(38,24,15,.72);
+  color:var(--cream);
+  padding:10px 15px;
+  border-radius:999px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.nav button:hover{
+  background:var(--gold);
+  color:#1b1008;
+}
+.center{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 20px;
+}
+.home-card{
+  max-width:950px;
+  padding:34px;
+  background:rgba(18,13,10,.55);
+  border:1px solid rgba(248,234,208,.35);
+  border-radius:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+h1{
+  font-size:clamp(48px,8vw,94px);
+  line-height:.95;
+  margin:0 0 14px;
+  text-shadow:0 4px 16px rgba(0,0,0,.8);
+}
+.subtitle{
+  font-size:clamp(18px,2.5vw,28px);
+  color:#f2d9a8;
+  margin:0 0 26px;
+}
+.quote{
+  max-width:760px;
+  margin:0 auto 28px;
+  font-size:clamp(18px,2vw,24px);
+  font-style:italic;
+  color:#fff2d5;
+}
+.signs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:14px;
+  margin-top:25px;
+}
+.sign{
+  display:block;
+  text-decoration:none;
+  color:#fff4dc;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.10),rgba(255,255,255,0)),
+    linear-gradient(#714321,#4b2b16);
+  border:2px solid #b77b37;
+  border-radius:16px;
+  padding:18px 14px;
+  font-weight:bold;
+  font-size:18px;
+  box-shadow:0 8px 18px rgba(0,0,0,.35);
+}
+.sign span{
+  display:block;
+  font-size:13px;
+  font-weight:normal;
+  color:#efd2a2;
+  margin-top:6px;
+}
+.sign:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(#8a552a,#5c351b);
+}
+.below{
+  max-width:1050px;
+  margin:0 auto;
+  padding:34px 18px 60px;
+}
+.panel{
+  background:var(--paper);
+  color:var(--ink);
+  border-radius:22px;
+  padding:24px;
+  margin:18px 0;
+  box-shadow:0 12px 32px rgba(0,0,0,.35);
+}
+.panel h2{margin-top:0;font-size:30px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+}
+.tile{
+  background:#fff8e9;
+  border:1px solid #d8bd88;
+  border-radius:16px;
+  padding:18px;
+}
+.tile h3{margin-top:0}
+.footer{
+  text-align:center;
+  color:#d6be91;
+  padding:28px;
+  background:#100b08;
+}
+@media(max-width:700px){
+  .topbar{display:block;text-align:center}
+  .brand{margin-bottom:12px}
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="topbar">
+    <div class="brand">The World of Five Oaks</div>
+    <div class="nav">
+      <button>Books</button>
+      <button>Families</button>
+      <button>Ranch Map</button>
+      <button>Music</button>
+      <button>Videos</button>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="home-card">
+      <h1>Five Oaks</h1>
+      <p class="subtitle">A family saga built in blood, grit, love, loyalty, and hard-won belonging.</p>
+      <p class="quote">The family was never simple. That was the point.</p>
+
+      <div class="signs">
+        <a class="sign" href="#books">📚 Enter the Library<span>Books, order, extras, and story paths</span></a>
+        <a class="sign" href="#families">🌳 Meet the Families<span>Characters, bloodlines, marriages, and bonds</span></a>
+        <a class="sign" href="#ranch">🗺️ Explore the Ranch<span>The barn, creek, cabins, town, and trouble</span></a>
+        <a class="sign" href="#music">🎵 Listen to the Music<span>Albums, songs, lyrics, and themes</span></a>
+        <a class="sign" href="#videos">🎥 Watch the Videos<span>Shorts, trailers, and character moments</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="below">
+  <section class="panel" id="books">
+    <h2>Start Reading</h2>
+    <div class="grid">
+      <div class="tile"><h3>The Books</h3><p>A full reading order will go here, with covers, blurbs, timeline placement, and buy links.</p></div>
+      <div class="tile"><h3>Where to Begin</h3><p>A spoiler-safe guide for new readers who need to know which door to open first.</p></div>
+      <div class="tile"><h3>Coming Next</h3><p>Upcoming books, planned arcs, and future Five Oaks milestones.</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="families">
+    <h2>Meet the Families</h2>
+    <div class="grid">
+      <div class="tile"><h3>The Partners</h3><p>Krys, Jake, Matt, Luke, and Jace: the foundation of Five Oaks.</p></div>
+      <div class="tile"><h3>The Next Generation</h3><p>Kai, Wes, Sami, Eli, Cole, Sawyer, Dawson, Jennifer, Caleb, and everyone rising behind them.</p></div>
+      <div class="tile"><h3>Jennifer, Waya, and Tsula</h3><p>The fire, the quiet man, and Little Fox. Their page gets built soon.</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="ranch">
+    <h2>Explore the Ranch</h2>
+    <p>This is where the clickable map will live: main cabin, barn, creek, Red Willow Crossing, Patterson place, new cabins, and all the places where Five Oaks changed people.</p>
+  </section>
+
+  <section class="panel" id="music">
+    <h2>Five Oaks Music</h2>
+    <p>Album covers, song pages, lyrics, character playlists, and links to YouTube, Spotify, Apple Music, or wherever the music ends up riding next.</p>
+  </section>
+
+  <section class="panel" id="videos">
+    <h2>Videos and Shorts</h2>
+    <p>The YouTube Shorts can be embedded here later so the app becomes the center of the whole Five Oaks world.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  The World of Five Oaks • Companion app prototype
+</footer>
+</body>
+</html>
