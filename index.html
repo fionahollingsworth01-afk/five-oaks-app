@@ -132,7 +132,65 @@
 </article>
 </div>
 <div class="music-note"><strong>Coming next:</strong> lyrics, album sections, character playlists, and book-by-book soundtracks.</div>
-</section><section class="panel" id="videos"><h2>Videos and Shorts</h2><p>Your YouTube Shorts can be embedded here later.</p></section>
+</section><section class="panel videos-panel" id="videos">
+<style>
+.videos-panel{max-width:1240px;background:linear-gradient(#2a1a10,#140d09);color:#f8ead0;border:2px solid #9b692e;}
+.video-hero{text-align:center;margin-bottom:28px;padding:10px 10px 4px;}
+.video-hero h2{font-size:clamp(38px,6vw,64px);margin:0 0 10px;text-shadow:0 4px 12px #000;}
+.video-hero p{font-size:19px;color:#ecd0a0;max-width:760px;margin:0 auto 20px;line-height:1.45;}
+.youtube-button{display:inline-block;text-decoration:none;background:#b72b1f;color:#fff8e9;border:2px solid #f0c27b;border-radius:999px;padding:14px 22px;font-weight:bold;font-size:18px;box-shadow:0 10px 24px rgba(0,0,0,.35);}
+.youtube-button:hover{background:#e13b2b;color:#fff;}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:26px;}
+.video-card{background:linear-gradient(#5b351d,#2e1a0d);border:1px solid #b77b37;border-radius:22px;overflow:hidden;box-shadow:0 18px 38px rgba(0,0,0,.35);}
+.video-thumb{aspect-ratio:16/9;background:linear-gradient(rgba(10,6,3,.15),rgba(10,6,3,.75)),url("five-oaks-ranch-clean.png");background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:54px;color:#fff4dc;text-shadow:0 4px 14px #000;border-bottom:1px solid rgba(248,234,208,.25);}
+.video-body{padding:18px;}
+.video-kicker{font-size:13px;color:#e9c789;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.video-card h3{font-size:24px;line-height:1.1;margin:0 0 10px;color:#fff4dc;}
+.video-card p{color:#efd2a2;line-height:1.45;}
+.video-note{margin-top:26px;background:#f1dfbd;color:#2a1a10;border-radius:18px;padding:18px;border:1px solid #d1a45c;}
+.video-note strong{color:#4b2b16;}
+</style>
+<div class="video-hero">
+  <h2>Five Oaks Videos and Shorts</h2>
+  <p>Watch trailers, character shorts, music videos, and story moments from The World of Five Oaks.</p>
+  <a class="youtube-button" href="https://youtube.com/@theworldoffiveoaks" target="_blank" rel="noopener">▶ Visit The World of Five Oaks on YouTube</a>
+</div>
+<div class="video-grid">
+  <article class="video-card">
+    <div class="video-thumb">🎬</div>
+    <div class="video-body">
+      <div class="video-kicker">Featured Channel</div>
+      <h3>The World of Five Oaks</h3>
+      <p>Your main YouTube home for Five Oaks Shorts, music, character moments, trailers, and story clips.</p>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="video-thumb">📱</div>
+    <div class="video-body">
+      <div class="video-kicker">Shorts</div>
+      <h3>Character Shorts</h3>
+      <p>Matt, Luke, Krys, Jennifer, Waya, Cole, Tate, Bekka, and the rest of the Five Oaks world.</p>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="video-thumb">🎵</div>
+    <div class="video-body">
+      <div class="video-kicker">Music</div>
+      <h3>Music Videos</h3>
+      <p>Original Five Oaks songs, lyric videos, scene songs, and album features.</p>
+    </div>
+  </article>
+  <article class="video-card">
+    <div class="video-thumb">📚</div>
+    <div class="video-body">
+      <div class="video-kicker">Books</div>
+      <h3>Book Trailers</h3>
+      <p>Trailers and promotional videos for the books in the Five Oaks Saga.</p>
+    </div>
+  </article>
+</div>
+<div class="video-note"><strong>Coming next:</strong> featured embedded Shorts. Send me specific YouTube video links later and I can place them directly inside this page.</div>
+</section>
 <div class="modal" id="bookModal"><div class="modal-box"><button class="close" onclick="closeBook()">Close</button><div class="modal-content"><img id="modalCover" src="" alt=""><div><p id="modalNumber"></p><h2 id="modalTitle"></h2><p id="modalGroup"></p><div class="meta"><strong>Timeline:</strong> <span id="modalTimeline"></span><br><strong>Main characters:</strong> <span id="modalCharacters"></span><br><strong>Soundtrack:</strong> <span id="modalSoundtrack"></span><br><strong>Trailer:</strong> <span id="modalTrailer"></span><br><strong>Buy links:</strong> <span id="modalBuy"></span></div><p id="modalBlurb" class="blurb"></p><button class="navbook" id="prevBtn">← Previous Book</button> <button class="navbook" id="nextBtn">Next Book →</button></div></div></div></div>
 <footer class="footer">The World of Five Oaks • Companion app prototype</footer>
 <script>
