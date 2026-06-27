@@ -1,0 +1,5 @@
+/* Five Oaks Music Library */
+.music-panel{max-width:1240px;margin:18px auto;background:linear-gradient(#2a1a10,#140d09);color:#f8ead0;border:2px solid #9b692e;border-radius:22px;padding:30px;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.music-head{text-align:center;margin-bottom:22px}.music-head h2{font-size:clamp(36px,6vw,64px);margin:0}.music-head p{color:#ecd0a0;font-size:18px}
+.music-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:26px}.song-card{background:#1b1008;border:1px solid #9b692e;border-radius:18px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.45)}
+.song-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}.song-body{padding:16px}.song-body h3{margin:0 0 8px;font-size:22px;color:#fff4dc}.song-tag{color:#e9c789;font-size:14px;margin-bottom:10px}.song-note{color:#d9bc85;font-size:15px;line-height:1.4;min-height:62px}.song-body audio{width:100%;margin-top:12px}.download-song{display:inline-block;margin-top:12px;color:#1b1008;background:#d59a3d;border-radius:999px;padding:9px 12px;text-decoration:none;font-weight:bold}
