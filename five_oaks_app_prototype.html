@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five Oaks — App Prototype</title>
+<style>
+:root{
+  --bg:#1f1711;
+  --panel:#2d2118;
+  --paper:#efe1c5;
+  --ink:#2b1c13;
+  --gold:#c4954b;
+  --cream:#f7edd8;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,serif;background:linear-gradient(#2b1b11,#120d0a);color:var(--cream)}
+header{padding:28px 20px;text-align:center;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.8)),url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');background-size:cover;background-position:center}
+h1{font-size:40px;margin:0 0 8px;letter-spacing:.5px}
+.tag{font-size:16px;color:#f0d9aa}
+nav{display:flex;gap:8px;overflow:auto;padding:10px;background:#15100c;position:sticky;top:0;z-index:5}
+button{border:1px solid #6b4b2d;background:#2d2118;color:#f7edd8;padding:10px 14px;border-radius:999px;font-weight:bold;white-space:nowrap}
+button.active{background:var(--gold);color:#1d120b}
+main{max-width:900px;margin:auto;padding:18px}
+.card{background:var(--paper);color:var(--ink);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.card h2,.card h3{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.tile{background:#fff7e8;border:1px solid #d6bd90;border-radius:14px;padding:14px;min-height:120px}
+.map{position:relative;height:360px;border-radius:18px;background:radial-gradient(circle at 30% 30%,#856039,#3d2a1a 65%,#20150e);overflow:hidden;border:2px solid #8b6a3e}
+.pin{position:absolute;transform:translate(-50%,-50%);background:#f6d389;color:#24160d;border:2px solid #5a3c21;border-radius:999px;padding:8px 12px;font-weight:bold;cursor:pointer}
+#mapText{margin-top:12px;font-size:17px}
+.family-row{display:flex;flex-wrap:wrap;gap:10px}
+.person{background:#fff8ec;border:1px solid #d6bd90;border-radius:12px;padding:10px 12px}
+.quote{font-style:italic;font-size:18px;border-left:4px solid var(--gold);padding-left:12px}
+.small{font-size:14px;opacity:.8}
+footer{text-align:center;color:#c7b18b;padding:30px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Five Oaks</h1>
+  <div class="tag">Step onto the ranch. Follow the families. Remember the bloodline.</div>
+</header>
+
+<nav>
+  <button class="active" onclick="show('home',this)">Home</button>
+  <button onclick="show('library',this)">Library</button>
+  <button onclick="show('families',this)">Families</button>
+  <button onclick="show('map',this)">Explore</button>
+  <button onclick="show('music',this)">Music</button>
+  <button onclick="show('journal',this)">Daily Journal</button>
+</nav>
+
+<main>
+<section id="home">
+  <div class="card">
+    <h2>Welcome to Five Oaks</h2>
+    <p>This is a working prototype for a Five Oaks companion app. It is not the full beast yet, but it gives the ranch a front door: books, families, music, map moments, and daily in-world entries.</p>
+    <p class="quote">The family was never simple. That was the point.</p>
+  </div>
+  <div class="grid">
+    <div class="tile"><h3>Read</h3><p>Books in order, spoiler-aware guides, chapter extras.</p></div>
+    <div class="tile"><h3>Follow</h3><p>Family trees, character ages, marriages, children, horses, connections.</p></div>
+    <div class="tile"><h3>Listen</h3><p>Five Oaks songs, narration samples, character playlists.</p></div>
+    <div class="tile"><h3>Explore</h3><p>Tap locations across the ranch and town to unlock story notes.</p></div>
+  </div>
+</section>
+
+<section id="library" style="display:none">
+  <div class="card">
+    <h2>The Library</h2>
+    <div class="grid">
+      <div class="tile"><h3>Books 1–7</h3><p>The foundation years of Five Oaks.</p></div>
+      <div class="tile"><h3>Book 13</h3><p>The bridge book.</p></div>
+      <div class="tile"><h3>Book 17</h3><p>Cole and Tate.</p></div>
+      <div class="tile"><h3>Book 18</h3><p>Jennifer and Waya: <em>Where the Fire Meets the Sky</em>.</p></div>
+      <div class="tile"><h3>Book 19</h3><p>Sawyer, Dawson, and oil under dust.</p></div>
+      <div class="tile"><h3>Book 21</h3><p>Royce returns.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="families" style="display:none">
+  <div class="card">
+    <h2>The Families</h2>
+    <p>Tap a person later and this becomes a full profile. For now, here is the skeleton.</p>
+    <div class="family-row">
+      <div class="person"><b>Krys</b><br>Partner. Mother. Center fire.</div>
+      <div class="person"><b>Jake</b><br>Husband. Father. Breaking point at the creek.</div>
+      <div class="person"><b>Matt</b><br>Partner. Guardian heart. Spells.</div>
+      <div class="person"><b>Luke</b><br>Partner. Builder of a life he chose.</div>
+      <div class="person"><b>Jace</b><br>Partner. Father of Jennifer.</div>
+      <div class="person"><b>Jennifer</b><br>Callahan. Red hair. Waya's fire.</div>
+      <div class="person"><b>Waya</b><br>Cherokee. Tsula's uncle and guardian.</div>
+      <div class="person"><b>Tsula</b><br>Little Fox. Twelve. Quiet and watchful.</div>
+      <div class="person"><b>Cole</b><br>Jace and Susanna's son. Tate's heart.</div>
+      <div class="person"><b>Tate</b><br>From Pleasant Hill, Kansas. Cole's risk.</div>
+    </div>
+  </div>
+</section>
+
+<section id="map" style="display:none">
+  <div class="card">
+    <h2>Explore Five Oaks</h2>
+    <div class="map">
+      <div class="pin" style="left:30%;top:42%" onclick="mapText('Main cabin: meals, arguments, family decisions, and half the trouble that keeps this saga breathing.')">Main Cabin</div>
+      <div class="pin" style="left:56%;top:61%" onclick="mapText('The barn: work, secrets, near-misses, and more damn feelings than anyone admits.')">Barn</div>
+      <div class="pin" style="left:72%;top:35%" onclick="mapText('The creek: Cole and Tate. Quiet meetings. Dangerous hope.')">Creek</div>
+      <div class="pin" style="left:46%;top:22%" onclick="mapText('Red Willow Crossing: town gossip, judgment, business, and trouble dressed as manners.')">Town</div>
+      <div class="pin" style="left:18%;top:70%" onclick="mapText('The Patterson place: old land, new purpose, and future oil under dust.')">Patterson Place</div>
+    </div>
+    <p id="mapText">Tap a location.</p>
+  </div>
+</section>
+
+<section id="music" style="display:none">
+  <div class="card">
+    <h2>Five Oaks Music</h2>
+    <div class="grid">
+      <div class="tile"><h3>Blood Before Bond</h3><p>Album page, lyrics, covers, and character ties.</p></div>
+      <div class="tile"><h3>They Were Family</h3><p>Second collection and emotional anchors.</p></div>
+      <div class="tile"><h3>Character Playlists</h3><p>Matt, Krys, Jake, Luke, Cole & Tate, Jennifer & Waya.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="journal" style="display:none">
+  <div class="card">
+    <h2>Daily Journal</h2>
+    <p class="small">Prototype entry</p>
+    <p>June 27, 1919</p>
+    <p>Waya and Tsula spent the morning near the water, pretending fishing was the only reason they had gone. Jennifer rode past the old place twice and told herself both times she had not been looking for him.</p>
+  </div>
+</section>
+</main>
+
+<footer>Five Oaks companion app prototype • Built as a starting point, not the whole damn ranch.</footer>
+
+<script>
+function show(id, btn){
+  document.querySelectorAll('main section').forEach(s=>s.style.display='none');
+  document.getElementById(id).style.display='block';
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function mapText(t){document.getElementById('mapText').textContent=t;}
+</script>
+</body>
+</html>
