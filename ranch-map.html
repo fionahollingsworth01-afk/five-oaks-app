@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five Oaks Ranch Map</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;background:#120d0a;color:#f8ead0}
+.ranch-page{min-height:100vh;background:radial-gradient(circle at top,#4a2b16 0,#21130b 46%,#100b08 100%);padding:22px}
+.ranch-shell{max-width:1250px;margin:0 auto}
+.ranch-top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.ranch-top a{color:#fff4dc;text-decoration:none;border:1px solid #b77b37;border-radius:999px;padding:10px 14px;background:#4b2b16;font-weight:bold}
+.ranch-title{margin:0;font-size:clamp(34px,6vw,66px);text-shadow:0 4px 15px #000}
+.ranch-subtitle{font-size:18px;color:#ecd0a0;max-width:850px;line-height:1.45;margin:4px 0 0}
+.ranch-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.75fr);gap:20px;align-items:start}
+.map-card,.detail-card,.legend-card{background:#f1dfbd;color:#2a1a10;border:2px solid #9b692e;border-radius:24px;box-shadow:0 18px 42px rgba(0,0,0,.45);overflow:hidden}
+.map-toolbar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:14px;background:#3a2211;color:#fff4dc;border-bottom:2px solid #9b692e}
+.map-toolbar input{flex:1;min-width:220px;border:2px solid #b77b37;border-radius:999px;padding:11px 14px;font-size:16px;background:#fff8e9;color:#2a1a10}
+.map-toolbar button,.era-buttons button,.clear-btn{border:1px solid #d59a3d;background:#7a4a22;color:#fff8e9;border-radius:999px;padding:10px 13px;font-weight:bold;cursor:pointer;font-family:inherit}
+.era-buttons{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px;background:#fff8e9;border-bottom:1px solid #d1a45c}
+.era-buttons button.active{background:#2f5b2a;color:#fff}
+.map-wrap{position:relative;overflow:auto;background:#d7bd84;padding:12px}
+.ranch-map{position:relative;width:min(1000px,100%);aspect-ratio:1.45/1;margin:auto;border:3px solid #6c441f;border-radius:20px;background:linear-gradient(145deg,#c9a56b,#ead59c 45%,#b8894d);box-shadow:inset 0 0 38px rgba(60,30,10,.28);min-width:760px}
+.ranch-map:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.22),transparent 20%),radial-gradient(circle at 80% 70%,rgba(75,43,22,.18),transparent 30%);pointer-events:none;border-radius:18px}
+.creek{position:absolute;left:-2%;right:-2%;top:66%;height:82px;background:linear-gradient(90deg,#426b77,#6fa2a7,#426b77);border-top:4px solid rgba(35,79,86,.8);border-bottom:4px solid rgba(35,79,86,.8);transform:rotate(-4deg);opacity:.9;border-radius:50%}
+.road{position:absolute;left:2%;right:3%;top:45%;height:44px;background:rgba(105,74,38,.55);border-top:2px dashed rgba(70,45,22,.75);border-bottom:2px dashed rgba(70,45,22,.75);transform:rotate(6deg);border-radius:50%}
+.trail{position:absolute;width:44%;height:20px;background:rgba(100,65,30,.44);border-top:1px dashed #5b351d;border-bottom:1px dashed #5b351d;transform:rotate(-24deg);left:48%;top:32%;border-radius:50%}
+.map-label{position:absolute;font-weight:bold;color:#321b0c;text-shadow:0 1px 0 rgba(255,244,220,.75);font-size:14px;pointer-events:none}
+.location{position:absolute;transform:translate(-50%,-50%);border:2px solid #4b2b16;background:#fff4dc;color:#2a1a10;border-radius:16px;padding:8px 10px;min-width:92px;text-align:center;font-family:inherit;font-weight:bold;box-shadow:0 8px 16px rgba(0,0,0,.25);cursor:pointer;transition:.18s;z-index:2}
+.location:hover,.location.active{background:#7a4a22;color:#fff8e9;transform:translate(-50%,-50%) scale(1.04)}
+.location .icon{display:block;font-size:22px;line-height:1}
+.location small{display:block;font-size:11px;font-weight:normal;margin-top:2px}
+.location.future{opacity:.38;filter:grayscale(1)}
+.location.future.active{opacity:1;filter:none}
+.detail-card{padding:20px;position:sticky;top:12px}
+.detail-card h2{font-size:34px;margin:0 0 6px;color:#3b210f}
+.detail-kicker{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#7a4a22;font-weight:bold;margin-bottom:12px}
+.detail-card p{line-height:1.5;font-size:16px}
+.detail-list{display:grid;gap:8px;margin-top:16px}
+.detail-list div{background:#fff8e9;border:1px solid #d1a45c;border-radius:14px;padding:10px}
+.detail-list strong{display:block;color:#4b2b16;margin-bottom:4px}
+.legend-card{padding:16px;margin-top:16px}
+.legend-card h3{margin:0 0 8px;color:#3b210f}
+.legend-card p{margin:6px 0;line-height:1.35}
+.note{font-size:14px;color:#5b351d;background:#fff8e9;border:1px solid #d1a45c;border-radius:14px;padding:12px;margin-top:12px}
+@media(max-width:900px){.ranch-grid{grid-template-columns:1fr}.detail-card{position:static}.ranch-map{min-width:720px}.map-wrap{padding-bottom:20px}}
+</style>
+</head>
+<body>
+<main class="ranch-page">
+  <div class="ranch-shell">
+    <div class="ranch-top">
+      <div>
+        <h1 class="ranch-title">Five Oaks Ranch Map</h1>
+        <p class="ranch-subtitle">A clickable, living map of the ranch. Choose a year, click a place, and let the land tell you who lived there, what happened there, and why it mattered.</p>
+      </div>
+      <a href="index.html#ranch">Back to App</a>
+    </div>
+
+    <section class="ranch-grid" aria-label="Interactive Five Oaks ranch map">
+      <div class="map-card">
+        <div class="map-toolbar">
+          <input id="mapSearch" type="search" placeholder="Search the ranch: Matt, barn, creek, Patterson..." aria-label="Search ranch locations">
+          <button type="button" id="resetMap">Reset</button>
+        </div>
+        <div class="era-buttons" aria-label="Ranch timeline">
+          <button type="button" class="active" data-era="1889">1889 Founding</button>
+          <button type="button" data-era="1916">1916 Main Saga</button>
+          <button type="button" data-era="1918">1918 Next Generation</button>
+          <button type="button" data-era="1920">1920 Oil Years</button>
+        </div>
+        <div class="map-wrap" aria-label="Scrollable ranch map area">
+          <div class="ranch-map" id="ranchMap">
+            <div class="creek" aria-hidden="true"></div>
+            <div class="road" aria-hidden="true"></div>
+            <div class="trail" aria-hidden="true"></div>
+            <span class="map-label" style="left:5%;top:41%">Road to Red Willow Crossing</span>
+            <span class="map-label" style="left:68%;top:62%">Creek</span>
+            <span class="map-label" style="left:62%;top:26%">Hill trail</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="detail-card" id="locationDetail" aria-live="polite">
+        <div class="detail-kicker">Click a place on the map</div>
+        <h2>Five Oaks</h2>
+        <p>The ranch is family ground first. Cabins, barns, roads, pastures, and creek banks all carry pieces of the saga.</p>
+        <div class="detail-list">
+          <div><strong>Tip</strong> Use the year buttons to show how Five Oaks grows over time.</div>
+          <div><strong>Search</strong> Try “Krys,” “Matt,” “Patterson,” “creek,” or “oil.”</div>
+        </div>
+        <div class="note">This first map is a working canon draft. We can move buildings, rename places, and add scenes as we lock the ranch layout down.</div>
+      </aside>
+    </section>
+
+    <section class="legend-card">
+      <h3>Map Key</h3>
+      <p>🏠 Cabins and homes • 🐎 barns, corrals, and work areas • 🌊 creek and outdoor scenes • 🛢️ future oil locations • 🪦 family memory ground</p>
+    </section>
+  </div>
+</main>
+
+<script>
+const locations = [
+  {id:'main-house',name:'Main House',icon:'🏠',x:39,y:43,era:1889,type:'Family Center',people:'Krys, Jake, the children, and the heart of Five Oaks',scenes:'Meals, arguments, recoveries, family meetings, and the moments when everyone ends up under one roof.',notes:'The emotional center of the ranch. If Five Oaks has a pulse, it is here.',keywords:'main house krys jake kai wes sami family kitchen porch'},
+  {id:'barn',name:'Main Barn',icon:'🐎',x:50,y:49,era:1889,type:'Work Ground',people:'Everyone who works Five Oaks',scenes:'Saddling horses, quiet talks, cattle work, and the kind of conversations people have when they are pretending they are only working.',notes:'Placed close to the main yard so every household crosses through its orbit.',keywords:'barn horses saddle matt jake luke jace cole tate'},
+  {id:'corrals',name:'Corrals',icon:'🐂',x:58,y:47,era:1889,type:'Cattle Work',people:'Hands, partners, sons, and troublemakers',scenes:'Branding, cattle sorting, fence talk, and all the dusty work that keeps the ranch alive.',notes:'This is where Five Oaks proves it is not just a home. It is a working ranch.',keywords:'corrals cattle branding calves pasture horses'},
+  {id:'matt-cabin',name:'Matt’s Cabin',icon:'🏠',x:30,y:54,era:1889,type:'Home',people:'Matt Haskins',scenes:'Quiet refuge, hard conversations, and the place people go when they need Matt more than they admit.',notes:'Matt needs space, but he never really lives outside the family.',keywords:'matt cabin spells jennie'},
+  {id:'luke-cabin',name:'Luke & Emma’s Cabin',icon:'🏠',x:25,y:39,era:1889,type:'Home',people:'Luke, Emma, Sami',scenes:'Food, family tension, old wounds, and the life Luke built instead of running from.',notes:'Close enough to feed everyone. Far enough for Emma to glare in peace when necessary.',keywords:'luke emma sami cabin kitchen'},
+  {id:'jace-cabin',name:'Jace & Susanna’s Cabin',icon:'🏠',x:48,y:35,era:1889,type:'Home',people:'Jace, Susanna, Eli, Cole, Sawyer, Dawson, Jennifer, Caleb',scenes:'The Callahan household, loud children, hard reckonings, and Jennifer’s growing independence.',notes:'A busy cabin with more feelings than chairs.',keywords:'jace susanna eli cole sawyer dawson jennifer caleb cabin'},
+  {id:'creek',name:'The Creek',icon:'🌊',x:62,y:69,era:1889,type:'Water & Quiet',people:'Everyone, eventually',scenes:'Fishing, stone skipping, private talks, children playing, and moments that feel safer away from the yard.',notes:'The creek keeps secrets better than the kitchen table.',keywords:'creek fishing stones tsula waya jennifer'},
+  {id:'orchard',name:'Orchard',icon:'🍎',x:16,y:58,era:1889,type:'Food & Memory',people:'Marie, Krys, children, whoever gets sent to pick apples',scenes:'Harvest work, quiet walks, and baskets carried back toward the house.',notes:'A useful place that can become sentimental before anyone admits it.',keywords:'orchard apples pie marie krys'},
+  {id:'cemetery',name:'Family Cemetery',icon:'🪦',x:13,y:30,era:1889,type:'Memory Ground',people:'The dead who still shape the living',scenes:'Grief, promises, visits, and the kind of silence Five Oaks understands.',notes:'Kept apart from the daily noise but never forgotten.',keywords:'cemetery graves family memory clara'},
+  {id:'blacksmith',name:'Blacksmith & Repair Shed',icon:'🔨',x:63,y:36,era:1889,type:'Repair Work',people:'Hands, partners, and anyone who broke something',scenes:'Repairs, tools, wagon work, and problem solving with soot on it.',notes:'Not fancy. Necessary as hell.',keywords:'blacksmith repair shed tools wagon'},
+  {id:'bunkhouse',name:'Bunkhouse',icon:'🛏️',x:67,y:50,era:1889,type:'Hands’ Quarters',people:'Robert, Tim, Stephen, Earl, Skeeter, Turner, and other ranch hands',scenes:'Card games, gossip, tired men, and ranch news traveling faster than horses.',notes:'Where hired hands become part of the machinery of Five Oaks.',keywords:'bunkhouse hands robert tim stephen earl skeeter turner'},
+  {id:'kai-cabin',name:'Kai & Paloma’s Cabin',icon:'🏠',x:73,y:25,era:1918,type:'Next Generation Home',people:'Kai, Paloma, and their family',scenes:'The next generation claiming space on the land without leaving the family behind.',notes:'Down the newer lane, a few miles from the main yard in canon. Shown nearby here so the map can hold it.',keywords:'kai paloma cabin next generation'},
+  {id:'eli-cabin',name:'Eli’s Cabin',icon:'🏠',x:69,y:30,era:1918,type:'Next Generation Home',people:'Eli and future family connections',scenes:'A place for healing, independence, and learning how to stay.',notes:'Built below Rhys and Olivia’s hill area in the later timeline.',keywords:'eli cabin hill rhys olivia'},
+  {id:'patterson',name:'Old Patterson Place',icon:'🏚️',x:82,y:58,era:1918,type:'East Property',people:'Jennifer, Waya, Tsula, Tavi, and later Five Oaks business',scenes:'Jennifer and Waya’s meetings, the old farmhouse, the barn, the creek path, and the land that becomes important later.',notes:'The chicken farm, the abandoned house, and the future office ground after Five Oaks buys the place.',keywords:'patterson chicken farm waya jennifer tsula tavi old house barn'},
+  {id:'oil',name:'Future Oil Site',icon:'🛢️',x:88,y:48,era:1920,type:'Black Gold',people:'Sawyer, Dawson, and the family business expanding',scenes:'The land changes again when oil comes up under dust.',notes:'Future Black Gold Under Dust territory. Hidden until the oil years.',keywords:'oil black gold sawyer dawson wells'}
+];
+
+const map = document.getElementById('ranchMap');
+const detail = document.getElementById('locationDetail');
+const search = document.getElementById('mapSearch');
+const eraButtons = [...document.querySelectorAll('.era-buttons button')];
+let activeEra = 1889;
+let activeId = null;
+
+function locationHTML(loc){
+  return `<button class="location" type="button" data-id="${loc.id}" style="left:${loc.x}%;top:${loc.y}%" aria-label="Open ${loc.name}"><span class="icon">${loc.icon}</span>${loc.name}<small>${loc.type}</small></button>`;
+}
+
+function renderLocations(){
+  map.querySelectorAll('.location').forEach(el=>el.remove());
+  locations.forEach(loc=>{
+    map.insertAdjacentHTML('beforeend', locationHTML(loc));
+    const btn = map.querySelector(`[data-id="${loc.id}"]`);
+    if(loc.era > activeEra) btn.classList.add('future');
+    if(loc.id === activeId) btn.classList.add('active');
+  });
+  map.querySelectorAll('.location').forEach(btn=>btn.addEventListener('click',()=>selectLocation(btn.dataset.id)));
+  applySearch();
+}
+
+function selectLocation(id){
+  activeId = id;
+  const loc = locations.find(item=>item.id===id);
+  document.querySelectorAll('.location').forEach(btn=>btn.classList.toggle('active',btn.dataset.id===id));
+  detail.innerHTML = `
+    <div class="detail-kicker">${loc.type} • appears ${loc.era}</div>
+    <h2>${loc.icon} ${loc.name}</h2>
+    <p>${loc.notes}</p>
+    <div class="detail-list">
+      <div><strong>People</strong>${loc.people}</div>
+      <div><strong>Story Use</strong>${loc.scenes}</div>
+      <div><strong>Canon Note</strong>${loc.era > activeEra ? 'This place belongs to a later era. Switch the timeline forward to see it fully active.' : 'Visible in the selected era.'}</div>
+    </div>
+  `;
+}
+
+function applySearch(){
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('.location').forEach(btn=>{
+    const loc = locations.find(item=>item.id===btn.dataset.id);
+    const hay = `${loc.name} ${loc.type} ${loc.people} ${loc.scenes} ${loc.notes} ${loc.keywords}`.toLowerCase();
+    btn.style.display = !q || hay.includes(q) ? '' : 'none';
+  });
+}
+
+search.addEventListener('input', applySearch);
+document.getElementById('resetMap').addEventListener('click',()=>{search.value='';activeId=null;renderLocations();detail.innerHTML='<div class="detail-kicker">Click a place on the map</div><h2>Five Oaks</h2><p>The ranch is family ground first. Cabins, barns, roads, pastures, and creek banks all carry pieces of the saga.</p><div class="detail-list"><div><strong>Tip</strong> Use the year buttons to show how Five Oaks grows over time.</div><div><strong>Search</strong> Try “Krys,” “Matt,” “Patterson,” “creek,” or “oil.”</div></div><div class="note">This first map is a working canon draft. We can move buildings, rename places, and add scenes as we lock the ranch layout down.</div>';});
+eraButtons.forEach(button=>button.addEventListener('click',()=>{activeEra=Number(button.dataset.era);eraButtons.forEach(b=>b.classList.toggle('active',b===button));renderLocations();if(activeId)selectLocation(activeId);}));
+renderLocations();
+</script>
+</body>
+</html>
