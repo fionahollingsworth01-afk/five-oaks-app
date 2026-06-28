@@ -8,37 +8,37 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Georgia,"Times New Roman",serif;background:#120d0a;color:#f8ead0}
-.ranch-page{min-height:100vh;background:radial-gradient(circle at top,#4a2b16 0,#21130b 46%,#100b08 100%);padding:22px}
-.ranch-shell{max-width:1320px;margin:0 auto}
-.ranch-top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.ranch-page{min-height:100vh;background:linear-gradient(#2b180c,#100b08);padding:18px}
+.ranch-shell{max-width:1380px;margin:0 auto}
+.ranch-top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .ranch-top a{color:#fff4dc;text-decoration:none;border:1px solid #b77b37;border-radius:999px;padding:10px 14px;background:#4b2b16;font-weight:bold}
-.ranch-title{margin:0;font-size:clamp(34px,6vw,66px);text-shadow:0 4px 15px #000}
-.ranch-subtitle{font-size:18px;color:#ecd0a0;max-width:890px;line-height:1.45;margin:4px 0 0}
-.ranch-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.72fr);gap:20px;align-items:start}
-.map-card,.detail-card,.legend-card{background:#f1dfbd;color:#2a1a10;border:2px solid #9b692e;border-radius:24px;box-shadow:0 18px 42px rgba(0,0,0,.45);overflow:hidden}
+.ranch-title{margin:0;font-size:clamp(34px,6vw,64px);text-shadow:0 4px 15px #000}
+.ranch-subtitle{font-size:18px;color:#ecd0a0;max-width:900px;line-height:1.45;margin:4px 0 0}
+.ranch-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.72fr);gap:18px;align-items:start}
+.map-card,.detail-card,.legend-card{background:#f6e7c6;color:#2a1a10;border:2px solid #9b692e;border-radius:24px;box-shadow:0 18px 42px rgba(0,0,0,.45);overflow:hidden}
 .map-toolbar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:14px;background:#3a2211;color:#fff4dc;border-bottom:2px solid #9b692e}
 .map-toolbar input{flex:1;min-width:220px;border:2px solid #b77b37;border-radius:999px;padding:11px 14px;font-size:16px;background:#fff8e9;color:#2a1a10}
 .map-toolbar button,.era-buttons button{border:1px solid #d59a3d;background:#7a4a22;color:#fff8e9;border-radius:999px;padding:10px 13px;font-weight:bold;cursor:pointer;font-family:inherit}
 .era-buttons{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px;background:#fff8e9;border-bottom:1px solid #d1a45c}
 .era-buttons button.active{background:#2f5b2a;color:#fff}
-.map-wrap{position:relative;overflow:auto;background:#d7bd84;padding:12px}
-.ranch-map{position:relative;width:min(1120px,100%);aspect-ratio:1.55/1;margin:auto;border:3px solid #6c441f;border-radius:20px;background:linear-gradient(145deg,#c9a56b,#ead59c 45%,#b8894d);box-shadow:inset 0 0 38px rgba(60,30,10,.28);min-width:940px}
-.ranch-map:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.18),transparent 18%),radial-gradient(circle at 86% 68%,rgba(75,43,22,.16),transparent 28%);pointer-events:none;border-radius:18px}
-.creek{position:absolute;left:-3%;right:-3%;top:61%;height:92px;background:linear-gradient(90deg,#426b77,#78abb1,#426b77);border-top:4px solid rgba(35,79,86,.8);border-bottom:4px solid rgba(35,79,86,.8);transform:rotate(-7deg);opacity:.9;border-radius:50%;z-index:0}
-.road{position:absolute;left:0;right:2%;top:48%;height:42px;background:rgba(105,74,38,.55);border-top:2px dashed rgba(70,45,22,.75);border-bottom:2px dashed rgba(70,45,22,.75);transform:rotate(5deg);border-radius:50%;z-index:0}
-.path-main{position:absolute;width:38%;height:18px;background:rgba(100,65,30,.44);border-top:1px dashed #5b351d;border-bottom:1px dashed #5b351d;transform:rotate(-70deg);left:43%;top:24%;border-radius:50%;z-index:0}
-.path-north{position:absolute;width:31%;height:16px;background:rgba(100,65,30,.40);border-top:1px dashed #5b351d;border-bottom:1px dashed #5b351d;transform:rotate(-38deg);left:36%;top:19%;border-radius:50%;z-index:0}
-.field,.pasture{position:absolute;border:2px solid rgba(75,43,22,.45);border-radius:18px;background:rgba(238,215,150,.35);color:#3b210f;text-align:center;font-weight:bold;padding:8px;font-size:14px;z-index:1;pointer-events:none}
-.pasture{background:rgba(104,138,69,.28)}
-.map-label{position:absolute;font-weight:bold;color:#321b0c;text-shadow:0 1px 0 rgba(255,244,220,.75);font-size:14px;pointer-events:none;z-index:1}
-.location{position:absolute;transform:translate(-50%,-50%);border:2px solid #4b2b16;background:#fff4dc;color:#2a1a10;border-radius:16px;padding:8px 10px;min-width:92px;text-align:center;font-family:inherit;font-weight:bold;box-shadow:0 8px 16px rgba(0,0,0,.25);cursor:pointer;transition:.18s;z-index:3}
-.location:hover,.location.active{background:#7a4a22;color:#fff8e9;transform:translate(-50%,-50%) scale(1.04)}
-.location .icon{display:block;font-size:22px;line-height:1}
-.location small{display:block;font-size:11px;font-weight:normal;margin-top:2px}
-.location.future{opacity:.38;filter:grayscale(1)}
+.map-wrap{position:relative;overflow:auto;background:#ead7ad;padding:12px}
+.ranch-map{position:relative;width:1320px;height:880px;margin:auto;border:3px solid #6c441f;border-radius:20px;background:#f4dfad;box-shadow:inset 0 0 28px rgba(80,45,15,.18)}
+.creek{position:absolute;left:0;right:0;top:575px;height:70px;background:linear-gradient(90deg,#3d7a91,#7fc1ca,#3d7a91);border-top:3px solid #245768;border-bottom:3px solid #245768;transform:rotate(-5deg);opacity:.92;border-radius:50%;z-index:0}
+.road{position:absolute;left:10px;right:20px;top:440px;height:34px;background:#c79a5f;border-top:2px dashed #80572b;border-bottom:2px dashed #80572b;transform:rotate(3deg);border-radius:50%;z-index:0;opacity:.9}
+.path-main{position:absolute;width:390px;height:15px;background:#d1a56c;border-top:1px dashed #80572b;border-bottom:1px dashed #80572b;transform:rotate(-66deg);left:570px;top:225px;border-radius:50%;z-index:1}
+.path-north{position:absolute;width:300px;height:13px;background:#d1a56c;border-top:1px dashed #80572b;border-bottom:1px dashed #80572b;transform:rotate(-38deg);left:430px;top:135px;border-radius:50%;z-index:1}
+.field,.pasture{position:absolute;border:2px solid rgba(75,43,22,.4);border-radius:18px;color:#3b210f;text-align:center;font-weight:bold;padding:8px;font-size:14px;z-index:1;pointer-events:none;background:#e9ca77}
+.pasture{background:#bdd48b}
+.map-label{position:absolute;font-weight:bold;color:#321b0c;text-shadow:0 1px 0 rgba(255,244,220,.85);font-size:14px;pointer-events:none;z-index:2;background:rgba(255,248,233,.65);border-radius:999px;padding:3px 8px}
+.location{position:absolute;transform:translate(-50%,-50%);border:2px solid #4b2b16;background:#fffaf0;color:#2a1a10;border-radius:999px;padding:6px 9px;min-width:54px;text-align:center;font-family:inherit;font-weight:bold;box-shadow:0 6px 12px rgba(0,0,0,.22);cursor:pointer;transition:.18s;z-index:4;font-size:12px;line-height:1.08;max-width:116px}
+.location.home{background:#fff4dc}.location.work{background:#fff0cc}.location.land{background:#e6f0cf}.location.water{background:#d7f5f8}.location.future-place{background:#eee0ff}
+.location:hover,.location.active{background:#7a4a22;color:#fff8e9;transform:translate(-50%,-50%) scale(1.08);z-index:20}
+.location .icon{display:block;font-size:17px;line-height:1;margin-bottom:1px}
+.location small{display:none}
+.location.future{opacity:.35;filter:grayscale(1)}
 .location.future.active{opacity:1;filter:none}
 .detail-card{padding:20px;position:sticky;top:12px}
-.detail-card h2{font-size:32px;margin:0 0 6px;color:#3b210f}
+.detail-card h2{font-size:30px;margin:0 0 6px;color:#3b210f}
 .detail-kicker{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#7a4a22;font-weight:bold;margin-bottom:12px}
 .detail-card p{line-height:1.5;font-size:16px}
 .detail-list{display:grid;gap:8px;margin-top:16px}
@@ -48,118 +48,65 @@ body{margin:0;font-family:Georgia,"Times New Roman",serif;background:#120d0a;col
 .legend-card h3{margin:0 0 8px;color:#3b210f}
 .legend-card p{margin:6px 0;line-height:1.35}
 .note{font-size:14px;color:#5b351d;background:#fff8e9;border:1px solid #d1a45c;border-radius:14px;padding:12px;margin-top:12px}
-@media(max-width:900px){.ranch-grid{grid-template-columns:1fr}.detail-card{position:static}.ranch-map{min-width:940px}.map-wrap{padding-bottom:20px}}
+@media(max-width:900px){.ranch-grid{grid-template-columns:1fr}.detail-card{position:static}.ranch-map{width:1320px;height:880px}.map-wrap{padding-bottom:20px}}
 </style>
 </head>
 <body>
 <main class="ranch-page">
   <div class="ranch-shell">
-    <div class="ranch-top">
-      <div>
-        <h1 class="ranch-title">Five Oaks Ranch Map</h1>
-        <p class="ranch-subtitle">A clickable canon-draft map of Five Oaks: the cabins, creek, fields, barns, pastures, Patterson place, and future oil ground.</p>
-      </div>
-      <a href="index.html#ranch">Back to App</a>
-    </div>
-
+    <div class="ranch-top"><div><h1 class="ranch-title">Five Oaks Ranch Map</h1><p class="ranch-subtitle">A clearer clickable canon-draft map of Five Oaks: cabins, creek, fields, barns, pastures, Patterson place, and future oil ground.</p></div><a href="index.html#ranch">Back to App</a></div>
     <section class="ranch-grid" aria-label="Interactive Five Oaks ranch map">
       <div class="map-card">
-        <div class="map-toolbar">
-          <input id="mapSearch" type="search" placeholder="Search: Krys, Matt, creek, Patterson, wheat, bunkhouse..." aria-label="Search ranch locations">
-          <button type="button" id="resetMap">Reset</button>
-        </div>
-        <div class="era-buttons" aria-label="Ranch timeline">
-          <button type="button" class="active" data-era="1889">1889 Founding</button>
-          <button type="button" data-era="1916">1916 Main Saga</button>
-          <button type="button" data-era="1918">1918 Next Generation</button>
-          <button type="button" data-era="1920">1920 Oil Years</button>
-        </div>
-        <div class="map-wrap" aria-label="Scrollable ranch map area">
-          <div class="ranch-map" id="ranchMap">
-            <div class="creek" aria-hidden="true"></div>
-            <div class="road" aria-hidden="true"></div>
-            <div class="path-main" aria-hidden="true"></div>
-            <div class="path-north" aria-hidden="true"></div>
-            <div class="pasture" style="left:8%;top:6%;width:22%;height:20%">North Pasture</div>
-            <div class="pasture" style="left:6%;top:74%;width:24%;height:18%">South Pasture</div>
-            <div class="pasture" style="left:74%;top:35%;width:20%;height:18%">East Pasture</div>
-            <div class="pasture" style="left:5%;top:36%;width:18%;height:18%">West Pasture</div>
-            <div class="field" style="left:31%;top:8%;width:15%;height:14%">Hay Field</div>
-            <div class="field" style="left:57%;top:7%;width:15%;height:14%">Cornfield</div>
-            <div class="field" style="left:75%;top:9%;width:16%;height:14%">Wheat Field</div>
-            <span class="map-label" style="left:5%;top:47%">Road to Red Willow Crossing</span>
-            <span class="map-label" style="left:69%;top:60%">Creek through Five Oaks</span>
-            <span class="map-label" style="left:50%;top:24%">Path behind main cabin</span>
-            <span class="map-label" style="left:39%;top:14%">New north path</span>
-          </div>
-        </div>
+        <div class="map-toolbar"><input id="mapSearch" type="search" placeholder="Search: Krys, Matt, creek, Patterson, wheat, bunkhouse..." aria-label="Search ranch locations"><button type="button" id="resetMap">Reset</button></div>
+        <div class="era-buttons" aria-label="Ranch timeline"><button type="button" class="active" data-era="1889">1889 Founding</button><button type="button" data-era="1916">1916 Main Saga</button><button type="button" data-era="1918">1918 Next Generation</button><button type="button" data-era="1920">1920 Oil Years</button></div>
+        <div class="map-wrap" aria-label="Scrollable ranch map area"><div class="ranch-map" id="ranchMap">
+          <div class="creek" aria-hidden="true"></div><div class="road" aria-hidden="true"></div><div class="path-main" aria-hidden="true"></div><div class="path-north" aria-hidden="true"></div>
+          <div class="pasture" style="left:35px;top:35px;width:255px;height:145px">North Pasture</div><div class="pasture" style="left:45px;top:690px;width:265px;height:135px">South Pasture</div><div class="pasture" style="left:1035px;top:330px;width:235px;height:130px">East Pasture</div><div class="pasture" style="left:45px;top:330px;width:220px;height:130px">West Pasture</div>
+          <div class="field" style="left:345px;top:35px;width:160px;height:105px">Hay Field</div><div class="field" style="left:825px;top:50px;width:170px;height:105px">Cornfield</div><div class="field" style="left:1040px;top:55px;width:175px;height:105px">Wheat Field</div>
+          <span class="map-label" style="left:42px;top:410px">Road to Red Willow Crossing</span><span class="map-label" style="left:855px;top:535px">Creek through Five Oaks</span><span class="map-label" style="left:630px;top:218px">Path behind main cabin</span><span class="map-label" style="left:430px;top:120px">New north path</span>
+        </div></div>
       </div>
-
-      <aside class="detail-card" id="locationDetail" aria-live="polite">
-        <div class="detail-kicker">Click a place on the map</div>
-        <h2>Five Oaks</h2>
-        <p>The main cabin sits at the heart of the ranch. From its porch, Matt’s small cabin, Luke and Emma’s larger cabin, and Jace and Susanna’s large cabin can be seen.</p>
-        <div class="detail-list">
-          <div><strong>Canon Anchor</strong>The creek runs through Five Oaks, and the ranch spreads into north, south, east, and west pastures with corn, hay, and wheat fields.</div>
-          <div><strong>Timeline</strong>Use the year buttons to reveal the next-generation cabins, Patterson place, and future oil site.</div>
-        </div>
-        <div class="note">This is now based on the layout you gave me. We can still nudge exact map positions as the picture sharpens.</div>
-      </aside>
+      <aside class="detail-card" id="locationDetail" aria-live="polite"><div class="detail-kicker">Click a place on the map</div><h2>Five Oaks</h2><p>The main cabin sits at the heart of the ranch. From its porch, Matt’s small cabin, Luke and Emma’s larger cabin, and Jace and Susanna’s large cabin can be seen.</p><div class="detail-list"><div><strong>Canon Anchor</strong>The creek runs through Five Oaks, and the ranch spreads into north, south, east, and west pastures with corn, hay, and wheat fields.</div><div><strong>Timeline</strong>Use the year buttons to reveal the next-generation cabins, Patterson place, and future oil site.</div></div><div class="note">I widened this version so things stop piling on top of each other. On a phone, scroll sideways inside the map.</div></aside>
     </section>
-
-    <section class="legend-card">
-      <h3>Map Key</h3>
-      <p>🏠 Homes • 🐎 barns and horses • 🐂 cattle work • 🌊 creek • 🌽 fields • 🐖 livestock • 🛏️ bunkhouses • 🛢️ future oil • 🏚️ Patterson place</p>
-    </section>
+    <section class="legend-card"><h3>Map Key</h3><p>🏠 Homes • 🐎 barns and horses • 🐂 cattle work • 🌊 creek • 🌽 fields • 🐖 livestock • 🛏️ bunkhouses • 🛢️ future oil • 🏚️ Patterson place</p></section>
   </div>
 </main>
-
 <script>
-const locations = [
-  {id:'main-cabin',name:'Main Cabin',icon:'🏠',x:43,y:43,era:1889,type:'Largest Cabin',people:'Jake and Krys Kincaid',scenes:'The heart of Five Oaks: meals, arguments, recoveries, planning, and family gathering under the biggest roof.',notes:'This is the biggest cabin on the ranch. Matt’s, Luke and Emma’s, and Jace and Susanna’s cabins can be seen from its porch.',keywords:'main cabin main house krys jake kincaid porch biggest family kitchen'},
-  {id:'matt-cabin',name:'Matt’s Cabin',icon:'🏠',x:31,y:51,era:1889,type:'Small Cabin',people:'Matt Haskins',scenes:'Quiet refuge, hard conversations, and a place close enough to the family that Matt is never truly apart from them.',notes:'Small cabin, visible from the porch of the main cabin.',keywords:'matt haskins cabin small visible porch'},
-  {id:'luke-cabin',name:'Luke & Emma’s Cabin',icon:'🏠',x:27,y:36,era:1889,type:'Larger Cabin',people:'Luke and Emma Rawlins',scenes:'Food, family, tension, marriage, and the home Luke built instead of running from.',notes:'Bigger than Matt’s cabin and visible from the main cabin porch.',keywords:'luke emma rawlins cabin larger visible porch sami'},
-  {id:'jace-cabin',name:'Jace & Susanna’s Cabin',icon:'🏠',x:54,y:36,era:1889,type:'Large Cabin',people:'Jace Callahan and Susanna Pike, with Eli, Cole, Sawyer, Dawson, Jennifer, and Caleb',scenes:'A loud, crowded Callahan household, big enough for six kids and all the trouble they drag through the door.',notes:'Large because they have six children, but still not as big as the main cabin.',keywords:'jace callahan susanna pike cabin eli cole sawyer dawson jennifer caleb six kids'},
-  {id:'marie-bob-cabin',name:'Marie & Bob’s Cabin',icon:'🏠',x:62,y:43,era:1889,type:'Family Cabin',people:'Marie Callahan and Bob',scenes:'Grandparent ground, meals, advice, worry, and family memory.',notes:'Catty-corner from Jace and Susanna’s cabin.',keywords:'marie bob bon cabin catty corner jace susanna'},
-  {id:'wes-sami-cabin',name:'Wes & Sami’s Cabin',icon:'🏠',x:49,y:24,era:1916,type:'Path Cabin',people:'Wes and Sami Kincaid',scenes:'A young family cabin up the path behind the main cabin.',notes:'Up a path behind the main cabin.',keywords:'wes sami kincaid cabin path behind main'},
-  {id:'rhys-olivia-cabin',name:'Rhys & Olivia’s Cabin',icon:'🏠',x:55,y:15,era:1916,type:'Upper Path Cabin',people:'Rhys and Olivia Callahan',scenes:'Their home sits above Wes and Sami’s place, farther up the same path.',notes:'Above Wes and Sami’s cabin.',keywords:'rhys olivia callahan cabin above path emily randall'},
-  {id:'eli-cabin',name:'Eli’s Cabin',icon:'🏠',x:43,y:29,era:1918,type:'Small Cabin',people:'Eli Callahan',scenes:'Independence, healing, and a place close to family without being swallowed by it.',notes:'Below Rhys and Olivia, on the opposite side of the path. Small, about the size of Matt’s cabin.',keywords:'eli callahan cabin small matt size opposite path below rhys olivia'},
-  {id:'eli-barn',name:'Eli’s Barn & Fence',icon:'🐎',x:39,y:31,era:1918,type:'Horse Barn',people:'Eli and his horse',scenes:'A small barn behind Eli’s place with fencing for his horse.',notes:'Eli has a barn behind his cabin and a fence for his horse.',keywords:'eli barn fence horse behind cabin'},
-  {id:'kai-paloma-cabin',name:'Kai & Paloma’s Cabin',icon:'🏠',x:36,y:14,era:1918,type:'North Path Cabin',people:'Kai and Paloma Kincaid',scenes:'A next-generation home up the new path north of the main cabin.',notes:'Up a new path to the north of the main cabin.',keywords:'kai paloma cabin north path new lane'},
-  {id:'main-barn',name:'Main Barn',icon:'🐎',x:48,y:54,era:1889,type:'Large Main Barn',people:'The Five Oaks family, hands, and horses',scenes:'Saddling, chores, work talks, arrivals, departures, and half the ranch business that never makes it to the office.',notes:'Large main barn north of the working yard, with several smaller barns nearby.',keywords:'main barn large horses saddle yard'},
-  {id:'small-barns',name:'Small Barns',icon:'🐎',x:58,y:57,era:1889,type:'Outbuildings',people:'Hands, family, livestock',scenes:'Storage, hay, tack, tools, and whatever the ranch needs on a given day.',notes:'Several small barns and work structures sit around the main barn.',keywords:'small barns outbuildings hay tack storage'},
-  {id:'bunkhouses',name:'Three Bunkhouses',icon:'🛏️',x:68,y:54,era:1889,type:'Hands’ Quarters',people:'Robert, Tim, Stephen, Earl, Skeeter, Turner, and other ranch hands',scenes:'Sleep, cards, gossip, work assignments, and ranch news traveling fast.',notes:'Three bunkhouses for the hired hands.',keywords:'three bunkhouses bunkhouse hands robert tim stephen earl skeeter turner'},
-  {id:'corrals',name:'Corrals',icon:'🐂',x:50,y:63,era:1889,type:'Cattle Work',people:'Partners, sons, and ranch hands',scenes:'Branding, sorting, breaking horses, cattle work, and dusty arguments.',notes:'Placed beside the barn area for daily ranch work.',keywords:'corrals cattle branding calves horses'},
-  {id:'chicken-coop',name:'Chicken Coop',icon:'🐔',x:35,y:62,era:1889,type:'Livestock',people:'Family, children doing chores, whoever draws the short straw',scenes:'Eggs, chores, pecking, and complaints.',notes:'Part of the smaller working structures around the main yard.',keywords:'chicken coop chickens eggs chores'},
-  {id:'pig-pen',name:'Pig Pen',icon:'🐖',x:31,y:66,era:1889,type:'Livestock',people:'Whoever has to feed the pigs',scenes:'Chores, mud, noise, and the glamorous side of ranch life. Which is to say, not glamorous at all.',notes:'Near the small livestock structures.',keywords:'pig pen pigs hogs chores'},
-  {id:'tool-sheds',name:'Tool Sheds',icon:'🔨',x:61,y:64,era:1889,type:'Work Structures',people:'Anyone fixing what broke',scenes:'Tools, repairs, tack, wagons, and ranch work that never ends.',notes:'Various small structures: tool sheds, storage, and repair spaces.',keywords:'tool sheds tools repair structures wagon'},
-  {id:'creek',name:'Creek',icon:'🌊',x:58,y:72,era:1889,type:'Water',people:'Family, children, fishermen, and anyone needing a quieter place',scenes:'Fishing, private talks, skipping stones, playing, and moments away from the main yard.',notes:'The creek runs through the ranch.',keywords:'creek runs through ranch fishing stones water'},
-  {id:'north-pasture',name:'North Pasture',icon:'🐂',x:19,y:16,era:1889,type:'Pasture',people:'Cattle and riders checking fences',scenes:'Fence rides, cattle grazing, and weather watching.',notes:'One of the four named pastures.',keywords:'north pasture cattle fences'},
-  {id:'south-pasture',name:'South Pasture',icon:'🐂',x:19,y:82,era:1889,type:'Pasture',people:'Cattle, horses, and ranch hands',scenes:'Cattle work, grazing, and long rides back toward the yard.',notes:'One of the four named pastures.',keywords:'south pasture cattle horses'},
-  {id:'east-pasture',name:'East Pasture',icon:'🐂',x:84,y:43,era:1889,type:'Pasture',people:'Cattle and hands riding east fence',scenes:'Fence checks, cattle movement, and the stretch toward the Patterson land.',notes:'One of the four named pastures.',keywords:'east pasture cattle fence patterson'},
-  {id:'west-pasture',name:'West Pasture',icon:'🐂',x:14,y:45,era:1889,type:'Pasture',people:'Riders and grazing stock',scenes:'Fence rides and open land west of the family cabins.',notes:'One of the four named pastures.',keywords:'west pasture cattle fence'},
-  {id:'hay-field',name:'Hay Field',icon:'🌾',x:38,y:15,era:1889,type:'Field',people:'Family and hands during harvest',scenes:'Cutting, hauling, stacking, and the work that keeps animals fed.',notes:'Hay field north of the main yard.',keywords:'hay field hayfield harvest'},
-  {id:'cornfield',name:'Cornfield',icon:'🌽',x:64,y:15,era:1889,type:'Field',people:'Family and hands',scenes:'Planting, harvesting, storage, and food for people and livestock.',notes:'Cornfield north and east of the main yard.',keywords:'cornfield corn field'},
-  {id:'wheat-field',name:'Wheat Field',icon:'🌾',x:83,y:16,era:1889,type:'Field',people:'Family and hands',scenes:'Planting, harvesting, and grain storage.',notes:'Wheat field near the eastern side of the ranch.',keywords:'wheat field grain'},
-  {id:'patterson',name:'Patterson Chicken Farm',icon:'🏚️',x:88,y:62,era:1918,type:'East Property • 120 Acres',people:'Future Five Oaks expansion, Jennifer, Waya, Tsula, and later the family business',scenes:'The old chicken farm, dilapidated house, bad barn, and the property Five Oaks buys to the east.',notes:'A 120-acre property east of Five Oaks. It becomes important both for Jennifer and Waya’s story and the future oil site.',keywords:'patterson chicken farm east 120 acres old farmhouse barn waya jennifer tsula'},
-  {id:'oil-site',name:'Future Oil Well Site',icon:'🛢️',x:92,y:52,era:1920,type:'Future Oil Ground',people:'Sawyer, Dawson, and the family as the ranch changes again',scenes:'Black Gold Under Dust territory: the land becomes something bigger and more complicated.',notes:'Future oil site on the Patterson land.',keywords:'oil well site future black gold sawyer dawson patterson'}
+const locations=[
+{id:'main-cabin',name:'Main Cabin',icon:'🏠',x:535,y:370,era:1889,group:'home',type:'Largest Cabin',people:'Jake and Krys Kincaid',scenes:'The heart of Five Oaks: meals, arguments, recoveries, planning, and family gathering under the biggest roof.',notes:'This is the biggest cabin on the ranch. Matt’s, Luke and Emma’s, and Jace and Susanna’s cabins can be seen from its porch.',keywords:'main cabin main house krys jake kincaid porch biggest family kitchen'},
+{id:'matt-cabin',name:'Matt',icon:'🏠',x:395,y:445,era:1889,group:'home',type:'Small Cabin',people:'Matt Haskins',scenes:'Quiet refuge, hard conversations, and a place close enough to the family that Matt is never truly apart from them.',notes:'Small cabin, visible from the porch of the main cabin.',keywords:'matt haskins cabin small visible porch'},
+{id:'luke-cabin',name:'Luke & Emma',icon:'🏠',x:355,y:305,era:1889,group:'home',type:'Larger Cabin',people:'Luke and Emma Rawlins',scenes:'Food, family, tension, marriage, and the home Luke built instead of running from.',notes:'Bigger than Matt’s cabin and visible from the main cabin porch.',keywords:'luke emma rawlins cabin larger visible porch sami'},
+{id:'jace-cabin',name:'Jace & Susanna',icon:'🏠',x:685,y:305,era:1889,group:'home',type:'Large Cabin',people:'Jace Callahan and Susanna Pike, with Eli, Cole, Sawyer, Dawson, Jennifer, and Caleb',scenes:'A loud, crowded Callahan household, big enough for six kids and all the trouble they drag through the door.',notes:'Large because they have six children, but still not as big as the main cabin.',keywords:'jace callahan susanna pike cabin eli cole sawyer dawson jennifer caleb six kids'},
+{id:'marie-bob-cabin',name:'Marie & Bob',icon:'🏠',x:805,y:405,era:1889,group:'home',type:'Family Cabin',people:'Marie Callahan and Bob',scenes:'Grandparent ground, meals, advice, worry, and family memory.',notes:'Catty-corner from Jace and Susanna’s cabin.',keywords:'marie bob bon cabin catty corner jace susanna'},
+{id:'wes-sami-cabin',name:'Wes & Sami',icon:'🏠',x:600,y:225,era:1916,group:'home',type:'Path Cabin',people:'Wes and Sami Kincaid',scenes:'A young family cabin up the path behind the main cabin.',notes:'Up a path behind the main cabin.',keywords:'wes sami kincaid cabin path behind main'},
+{id:'rhys-olivia-cabin',name:'Rhys & Olivia',icon:'🏠',x:660,y:125,era:1916,group:'home',type:'Upper Path Cabin',people:'Rhys and Olivia Callahan',scenes:'Their home sits above Wes and Sami’s place, farther up the same path.',notes:'Above Wes and Sami’s cabin.',keywords:'rhys olivia callahan cabin above path emily randall'},
+{id:'eli-cabin',name:'Eli Cabin',icon:'🏠',x:505,y:245,era:1918,group:'home',type:'Small Cabin',people:'Eli Callahan',scenes:'Independence, healing, and a place close to family without being swallowed by it.',notes:'Below Rhys and Olivia, on the opposite side of the path. Small, about the size of Matt’s cabin.',keywords:'eli callahan cabin small matt size opposite path below rhys olivia'},
+{id:'eli-barn',name:'Eli Barn',icon:'🐎',x:465,y:285,era:1918,group:'work',type:'Horse Barn',people:'Eli and his horse',scenes:'A small barn behind Eli’s place with fencing for his horse.',notes:'Eli has a barn behind his cabin and a fence for his horse.',keywords:'eli barn fence horse behind cabin'},
+{id:'kai-paloma-cabin',name:'Kai & Paloma',icon:'🏠',x:455,y:95,era:1918,group:'home',type:'North Path Cabin',people:'Kai and Paloma Kincaid',scenes:'A next-generation home up the new path north of the main cabin.',notes:'Up a new path to the north of the main cabin.',keywords:'kai paloma cabin north path new lane'},
+{id:'main-barn',name:'Main Barn',icon:'🐎',x:585,y:500,era:1889,group:'work',type:'Large Main Barn',people:'The Five Oaks family, hands, and horses',scenes:'Saddling, chores, work talks, arrivals, departures, and half the ranch business that never makes it to the office.',notes:'Large main barn with several smaller barns nearby.',keywords:'main barn large horses saddle yard'},
+{id:'small-barns',name:'Small Barns',icon:'🐎',x:725,y:515,era:1889,group:'work',type:'Outbuildings',people:'Hands, family, livestock',scenes:'Storage, hay, tack, tools, and whatever the ranch needs on a given day.',notes:'Several small barns and work structures sit around the main barn.',keywords:'small barns outbuildings hay tack storage'},
+{id:'bunkhouses',name:'3 Bunkhouses',icon:'🛏️',x:860,y:510,era:1889,group:'work',type:'Hands’ Quarters',people:'Robert, Tim, Stephen, Earl, Skeeter, Turner, and other ranch hands',scenes:'Sleep, cards, gossip, work assignments, and ranch news traveling fast.',notes:'Three bunkhouses for the hired hands.',keywords:'three bunkhouses bunkhouse hands robert tim stephen earl skeeter turner'},
+{id:'corrals',name:'Corrals',icon:'🐂',x:610,y:655,era:1889,group:'work',type:'Cattle Work',people:'Partners, sons, and ranch hands',scenes:'Branding, sorting, breaking horses, cattle work, and dusty arguments.',notes:'Placed beside the barn area for daily ranch work.',keywords:'corrals cattle branding calves horses'},
+{id:'chicken-coop',name:'Coop',icon:'🐔',x:405,y:610,era:1889,group:'work',type:'Livestock',people:'Family, children doing chores, whoever draws the short straw',scenes:'Eggs, chores, pecking, and complaints.',notes:'Part of the smaller working structures around the main yard.',keywords:'chicken coop chickens eggs chores'},
+{id:'pig-pen',name:'Pig Pen',icon:'🐖',x:325,y:655,era:1889,group:'work',type:'Livestock',people:'Whoever has to feed the pigs',scenes:'Chores, mud, noise, and the glamorous side of ranch life.',notes:'Near the small livestock structures.',keywords:'pig pen pigs hogs chores'},
+{id:'tool-sheds',name:'Tool Sheds',icon:'🔨',x:765,y:650,era:1889,group:'work',type:'Work Structures',people:'Anyone fixing what broke',scenes:'Tools, repairs, tack, wagons, and ranch work that never ends.',notes:'Various small structures: tool sheds, storage, and repair spaces.',keywords:'tool sheds tools repair structures wagon'},
+{id:'creek',name:'Creek',icon:'🌊',x:850,y:620,era:1889,group:'water',type:'Water',people:'Family, children, fishermen, and anyone needing a quieter place',scenes:'Fishing, private talks, skipping stones, playing, and moments away from the main yard.',notes:'The creek runs through the ranch.',keywords:'creek runs through ranch fishing stones water'},
+{id:'north-pasture',name:'North',icon:'🐂',x:160,y:95,era:1889,group:'land',type:'Pasture',people:'Cattle and riders checking fences',scenes:'Fence rides, cattle grazing, and weather watching.',notes:'One of the four named pastures.',keywords:'north pasture cattle fences'},
+{id:'south-pasture',name:'South',icon:'🐂',x:175,y:755,era:1889,group:'land',type:'Pasture',people:'Cattle, horses, and ranch hands',scenes:'Cattle work, grazing, and long rides back toward the yard.',notes:'One of the four named pastures.',keywords:'south pasture cattle horses'},
+{id:'east-pasture',name:'East',icon:'🐂',x:1155,y:395,era:1889,group:'land',type:'Pasture',people:'Cattle and hands riding east fence',scenes:'Fence checks, cattle movement, and the stretch toward the Patterson land.',notes:'One of the four named pastures.',keywords:'east pasture cattle fence patterson'},
+{id:'west-pasture',name:'West',icon:'🐂',x:155,y:395,era:1889,group:'land',type:'Pasture',people:'Riders and grazing stock',scenes:'Fence rides and open land west of the family cabins.',notes:'One of the four named pastures.',keywords:'west pasture cattle fence'},
+{id:'hay-field',name:'Hay',icon:'🌾',x:425,y:90,era:1889,group:'land',type:'Field',people:'Family and hands during harvest',scenes:'Cutting, hauling, stacking, and the work that keeps animals fed.',notes:'Hay field north of the main yard.',keywords:'hay field hayfield harvest'},
+{id:'cornfield',name:'Corn',icon:'🌽',x:910,y:105,era:1889,group:'land',type:'Field',people:'Family and hands',scenes:'Planting, harvesting, storage, and food for people and livestock.',notes:'Cornfield north and east of the main yard.',keywords:'cornfield corn field'},
+{id:'wheat-field',name:'Wheat',icon:'🌾',x:1130,y:110,era:1889,group:'land',type:'Field',people:'Family and hands',scenes:'Planting, harvesting, and grain storage.',notes:'Wheat field near the eastern side of the ranch.',keywords:'wheat field grain'},
+{id:'patterson',name:'Patterson',icon:'🏚️',x:1135,y:635,era:1918,group:'future-place',type:'East Property • 120 Acres',people:'Future Five Oaks expansion, Jennifer, Waya, Tsula, and later the family business',scenes:'The old chicken farm, dilapidated house, bad barn, and the property Five Oaks buys to the east.',notes:'A 120-acre property east of Five Oaks.',keywords:'patterson chicken farm east 120 acres old farmhouse barn waya jennifer tsula'},
+{id:'oil-site',name:'Oil Site',icon:'🛢️',x:1230,y:535,era:1920,group:'future-place',type:'Future Oil Ground',people:'Sawyer, Dawson, and the family as the ranch changes again',scenes:'Black Gold Under Dust territory: the land becomes something bigger and more complicated.',notes:'Future oil site on the Patterson land.',keywords:'oil well site future black gold sawyer dawson patterson'}
 ];
-
-const map = document.getElementById('ranchMap');
-const detail = document.getElementById('locationDetail');
-const search = document.getElementById('mapSearch');
-const eraButtons = [...document.querySelectorAll('.era-buttons button')];
-let activeEra = 1889;
-let activeId = null;
-
-function locationHTML(loc){return `<button class="location" type="button" data-id="${loc.id}" style="left:${loc.x}%;top:${loc.y}%" aria-label="Open ${loc.name}"><span class="icon">${loc.icon}</span>${loc.name}<small>${loc.type}</small></button>`;}
-function renderLocations(){map.querySelectorAll('.location').forEach(el=>el.remove());locations.forEach(loc=>{map.insertAdjacentHTML('beforeend',locationHTML(loc));const btn=map.querySelector(`[data-id="${loc.id}"]`);if(loc.era>activeEra)btn.classList.add('future');if(loc.id===activeId)btn.classList.add('active');});map.querySelectorAll('.location').forEach(btn=>btn.addEventListener('click',()=>selectLocation(btn.dataset.id)));applySearch();}
-function selectLocation(id){activeId=id;const loc=locations.find(item=>item.id===id);document.querySelectorAll('.location').forEach(btn=>btn.classList.toggle('active',btn.dataset.id===id));detail.innerHTML=`<div class="detail-kicker">${loc.type} • appears ${loc.era}</div><h2>${loc.icon} ${loc.name}</h2><p>${loc.notes}</p><div class="detail-list"><div><strong>People</strong>${loc.people}</div><div><strong>Story Use</strong>${loc.scenes}</div><div><strong>Canon Note</strong>${loc.era>activeEra?'This place belongs to a later era. Switch the timeline forward to see it fully active.':'Visible in the selected era.'}</div></div>`;}
-function applySearch(){const q=search.value.trim().toLowerCase();document.querySelectorAll('.location').forEach(btn=>{const loc=locations.find(item=>item.id===btn.dataset.id);const hay=`${loc.name} ${loc.type} ${loc.people} ${loc.scenes} ${loc.notes} ${loc.keywords}`.toLowerCase();btn.style.display=!q||hay.includes(q)?'':'none';});}
-search.addEventListener('input',applySearch);
-document.getElementById('resetMap').addEventListener('click',()=>{search.value='';activeId=null;renderLocations();detail.innerHTML='<div class="detail-kicker">Click a place on the map</div><h2>Five Oaks</h2><p>The main cabin sits at the heart of the ranch. From its porch, Matt’s small cabin, Luke and Emma’s larger cabin, and Jace and Susanna’s large cabin can be seen.</p><div class="detail-list"><div><strong>Canon Anchor</strong>The creek runs through Five Oaks, and the ranch spreads into north, south, east, and west pastures with corn, hay, and wheat fields.</div><div><strong>Timeline</strong>Use the year buttons to reveal the next-generation cabins, Patterson place, and future oil site.</div></div><div class="note">This is now based on the layout you gave me. We can still nudge exact map positions as the picture sharpens.</div>';});
-eraButtons.forEach(button=>button.addEventListener('click',()=>{activeEra=Number(button.dataset.era);eraButtons.forEach(b=>b.classList.toggle('active',b===button));renderLocations();if(activeId)selectLocation(activeId);}));
-renderLocations();
+const map=document.getElementById('ranchMap'),detail=document.getElementById('locationDetail'),search=document.getElementById('mapSearch'),eraButtons=[...document.querySelectorAll('.era-buttons button')];let activeEra=1889,activeId=null;
+function locationHTML(loc){return `<button class="location ${loc.group}" type="button" data-id="${loc.id}" style="left:${loc.x}px;top:${loc.y}px" aria-label="Open ${loc.name}"><span class="icon">${loc.icon}</span>${loc.name}<small>${loc.type}</small></button>`}
+function renderLocations(){map.querySelectorAll('.location').forEach(el=>el.remove());locations.forEach(loc=>{map.insertAdjacentHTML('beforeend',locationHTML(loc));const btn=map.querySelector(`[data-id="${loc.id}"]`);if(loc.era>activeEra)btn.classList.add('future');if(loc.id===activeId)btn.classList.add('active')});map.querySelectorAll('.location').forEach(btn=>btn.addEventListener('click',()=>selectLocation(btn.dataset.id)));applySearch()}
+function selectLocation(id){activeId=id;const loc=locations.find(item=>item.id===id);document.querySelectorAll('.location').forEach(btn=>btn.classList.toggle('active',btn.dataset.id===id));detail.innerHTML=`<div class="detail-kicker">${loc.type} • appears ${loc.era}</div><h2>${loc.icon} ${loc.name}</h2><p>${loc.notes}</p><div class="detail-list"><div><strong>People</strong>${loc.people}</div><div><strong>Story Use</strong>${loc.scenes}</div><div><strong>Canon Note</strong>${loc.era>activeEra?'This belongs to a later era. Switch the timeline forward to see it fully active.':'Visible in the selected era.'}</div></div>`}
+function applySearch(){const q=search.value.trim().toLowerCase();document.querySelectorAll('.location').forEach(btn=>{const loc=locations.find(item=>item.id===btn.dataset.id);const hay=`${loc.name} ${loc.type} ${loc.people} ${loc.scenes} ${loc.notes} ${loc.keywords}`.toLowerCase();btn.style.display=!q||hay.includes(q)?'':'none'})}
+search.addEventListener('input',applySearch);document.getElementById('resetMap').addEventListener('click',()=>{search.value='';activeId=null;renderLocations();detail.innerHTML='<div class="detail-kicker">Click a place on the map</div><h2>Five Oaks</h2><p>The main cabin sits at the heart of the ranch. From its porch, Matt’s small cabin, Luke and Emma’s larger cabin, and Jace and Susanna’s large cabin can be seen.</p><div class="detail-list"><div><strong>Canon Anchor</strong>The creek runs through Five Oaks, and the ranch spreads into north, south, east, and west pastures with corn, hay, and wheat fields.</div><div><strong>Timeline</strong>Use the year buttons to reveal the next-generation cabins, Patterson place, and future oil site.</div></div><div class="note">I widened this version so things stop piling on top of each other. On a phone, scroll sideways inside the map.</div>'});eraButtons.forEach(button=>button.addEventListener('click',()=>{activeEra=Number(button.dataset.era);eraButtons.forEach(b=>b.classList.toggle('active',b===button));renderLocations();if(activeId)selectLocation(activeId)}));renderLocations();
 </script>
 </body>
 </html>
