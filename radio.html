@@ -34,34 +34,35 @@
 
     <section class="card">
       <label for="stationUrl">Standalone Five Oaks Radio address</label>
-      <input id="stationUrl" type="url" placeholder="Paste the radio address here once">
+      <input id="stationUrl" type="url" value="http://192.168.1.193:8502" aria-label="Standalone Five Oaks Radio address">
       <div class="buttons">
-        <button class="primary" id="saveOpen">Save and open station</button>
+        <button class="primary" id="saveOpen">Open standalone radio</button>
         <button id="showInside">Play inside companion app</button>
-        <button id="forget">Clear saved address</button>
+        <button id="forget">Reset saved address</button>
       </div>
-      <div class="status" id="status"></div>
-      <p class="note">The address is saved only on this device. Opening the station separately preserves the version that works on the phone and through the car radio. The embedded option is an additional companion-app view, not a replacement.</p>
+      <div class="status" id="status">Five Oaks Radio is connected.</div>
+      <p class="note">Opening the station separately preserves the version that works on the phone and through the car radio. The embedded option is an additional companion-app view, not a replacement.</p>
       <iframe id="stationFrame" title="Five Oaks Radio"></iframe>
     </section>
   </main>
   <script>
     const key='fiveOaksRadioUrl';
+    const defaultUrl='http://192.168.1.193:8502';
     const input=document.getElementById('stationUrl');
     const frame=document.getElementById('stationFrame');
     const status=document.getElementById('status');
-    input.value=localStorage.getItem(key)||'';
+    input.value=localStorage.getItem(key)||defaultUrl;
 
     function validUrl(){
       const value=input.value.trim();
-      if(!value){status.textContent='Paste the Five Oaks Radio address first.';return ''}
+      if(!value){status.textContent='The Five Oaks Radio address is missing.';return ''}
       try{return new URL(value).href}catch{status.textContent='That does not look like a complete web address.';return ''}
     }
 
     document.getElementById('saveOpen').addEventListener('click',()=>{
       const url=validUrl(); if(!url)return;
       localStorage.setItem(key,url);
-      status.textContent='Station saved. Opening the standalone radio now.';
+      status.textContent='Opening the standalone Five Oaks Radio.';
       window.open(url,'_blank','noopener');
     });
 
@@ -70,12 +71,12 @@
       localStorage.setItem(key,url);
       frame.src=url;
       frame.style.display='block';
-      status.textContent='Companion-app radio view opened below. The standalone station remains unchanged.';
+      status.textContent='Five Oaks Radio is playing inside the companion app below.';
     });
 
     document.getElementById('forget').addEventListener('click',()=>{
-      localStorage.removeItem(key); input.value=''; frame.src=''; frame.style.display='none';
-      status.textContent='Saved radio address cleared from this device.';
+      localStorage.setItem(key,defaultUrl); input.value=defaultUrl; frame.src=''; frame.style.display='none';
+      status.textContent='The radio address was reset.';
     });
   </script>
 </body>
