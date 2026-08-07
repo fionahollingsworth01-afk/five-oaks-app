@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d241f">
   <title>Five Oaks Radio</title>
   <style>
     *{box-sizing:border-box}
-    body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(145deg,#0d241f,#123c34 55%,#071512);color:#f8e7ad;min-height:100vh}
-    header{padding:22px 20px;border-bottom:1px solid rgba(248,231,173,.35);background:rgba(3,14,12,.55);position:sticky;top:0;backdrop-filter:blur(8px)}
+    body{margin:0;min-height:100vh;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(rgba(5,22,18,.78),rgba(3,14,12,.94)),url("five-oaks-ranch-clean.png") center/cover fixed;color:#fff2c9}
+    header{padding:18px 20px;background:rgba(3,14,12,.78);border-bottom:1px solid rgba(255,211,57,.35);position:sticky;top:0;z-index:2;backdrop-filter:blur(10px)}
     header a{color:#f8e7ad;text-decoration:none;font-weight:bold}
-    main{max-width:1050px;margin:auto;padding:48px 18px 70px}
+    main{width:min(760px,100%);margin:auto;padding:36px 18px calc(48px + env(safe-area-inset-bottom))}
     .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:13px;color:#e6b936}
-    h1{font-size:clamp(48px,9vw,90px);line-height:.95;margin:12px 0 18px;color:#ffd339}
-    .lead{font-size:21px;line-height:1.6;max-width:800px;color:#fff2c9}
-    .card{margin-top:30px;padding:24px;border:1px solid rgba(255,211,57,.45);border-radius:24px;background:rgba(4,30,25,.72);box-shadow:0 22px 65px rgba(0,0,0,.35)}
-    label{display:block;font-weight:bold;margin-bottom:9px}
-    input{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,211,57,.55);background:#071d19;color:#fff7da;font:inherit}
-    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    button,a.button{padding:12px 18px;border-radius:999px;border:1px solid #ffd339;background:#1b4e43;color:#fff7da;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
-    button.primary,a.button.primary{background:#ffd339;color:#13251f}
-    .note{margin-top:18px;line-height:1.55;color:#e8dba8}
-    iframe{display:none;width:100%;height:760px;border:1px solid rgba(255,211,57,.55);border-radius:20px;margin-top:24px;background:#061713}
-    .status{margin-top:12px;min-height:1.4em;color:#ffd966}
-    @media(max-width:700px){iframe{height:680px}main{padding-top:32px}}
+    h1{font-size:clamp(48px,12vw,82px);line-height:.95;margin:12px 0;color:#ffd339;text-shadow:0 4px 18px #000}
+    .lead{font-size:19px;line-height:1.5;margin:0 0 24px}
+    .player{padding:24px;border:1px solid rgba(255,211,57,.5);border-radius:26px;background:rgba(4,30,25,.9);box-shadow:0 22px 65px rgba(0,0,0,.5)}
+    .cover{display:block;width:min(360px,100%);aspect-ratio:1;margin:0 auto 22px;object-fit:cover;border-radius:20px;border:2px solid #b98d25;box-shadow:0 16px 38px rgba(0,0,0,.55)}
+    .now{text-align:center}
+    .now small{color:#e6b936;letter-spacing:.12em;text-transform:uppercase}
+    .now h2{margin:8px 0 4px;font-size:clamp(27px,7vw,39px);color:#fff8df}
+    .now p{margin:0;color:#d8c89d}
+    audio{width:100%;margin:22px 0 14px}
+    .controls{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:10px}
+    button{min-height:52px;border-radius:999px;border:1px solid #ffd339;background:#1b4e43;color:#fff7da;font:inherit;font-weight:bold;cursor:pointer}
+    button.primary{background:#ffd339;color:#13251f;font-size:17px}
+    label{display:block;margin:24px 0 8px;font-weight:bold;color:#f8e7ad}
+    select{width:100%;padding:14px;border-radius:13px;border:1px solid rgba(255,211,57,.55);background:#071d19;color:#fff7da;font:inherit}
+    .status{margin-top:16px;padding:12px 14px;border-radius:14px;background:rgba(255,211,57,.09);color:#ffe178;line-height:1.45}
+    .note{font-size:14px;line-height:1.5;color:#d8c89d;margin:18px 2px 0}
   </style>
 </head>
 <body>
@@ -30,54 +35,107 @@
   <main>
     <div class="eyebrow">The World of Five Oaks</div>
     <h1>Five Oaks Radio</h1>
-    <p class="lead">The radio remains its own standalone station for phone and car use. This page also gives the companion app a doorway into the same station, so the music is available in both places without replacing or damaging the original radio.</p>
+    <p class="lead">Your Five Oaks music, available anywhere your phone has internet service. Your laptop does not need to be on.</p>
 
-    <section class="card">
-      <label for="stationUrl">Standalone Five Oaks Radio address</label>
-      <input id="stationUrl" type="url" value="http://192.168.1.193:8502" aria-label="Standalone Five Oaks Radio address">
-      <div class="buttons">
-        <button class="primary" id="saveOpen">Open standalone radio</button>
-        <button id="showInside">Play inside companion app</button>
-        <button id="forget">Reset saved address</button>
+    <section class="player">
+      <img class="cover" id="cover" src="five-oaks.jpg" alt="Current Five Oaks song cover">
+      <div class="now">
+        <small>Now playing</small>
+        <h2 id="title">Five Oaks</h2>
+        <p id="position">Song 1 of 10</p>
       </div>
-      <div class="status" id="status">Five Oaks Radio is connected.</div>
-      <p class="note">Opening the station separately preserves the version that works on the phone and through the car radio. The embedded option is an additional companion-app view, not a replacement.</p>
-      <iframe id="stationFrame" title="Five Oaks Radio"></iframe>
+
+      <audio id="audio" controls preload="metadata" src="five-oaks.mp3"></audio>
+
+      <div class="controls">
+        <button id="previous" type="button">◀ Previous</button>
+        <button class="primary" id="playPause" type="button">▶ Play</button>
+        <button id="next" type="button">Next ▶</button>
+      </div>
+
+      <label for="songList">Choose a song</label>
+      <select id="songList"></select>
+      <div class="status" id="status">Ready. Press Play to start Five Oaks Radio.</div>
+      <p class="note">The station continues through the playlist automatically. Phone and car controls can pause, resume, and skip when your browser supports them.</p>
     </section>
   </main>
-  <script>
-    const key='fiveOaksRadioUrl';
-    const defaultUrl='http://192.168.1.193:8502';
-    const input=document.getElementById('stationUrl');
-    const frame=document.getElementById('stationFrame');
-    const status=document.getElementById('status');
-    input.value=localStorage.getItem(key)||defaultUrl;
 
-    function validUrl(){
-      const value=input.value.trim();
-      if(!value){status.textContent='The Five Oaks Radio address is missing.';return ''}
-      try{return new URL(value).href}catch{status.textContent='That does not look like a complete web address.';return ''}
+  <script>
+    const songs=[
+      {title:"Five Oaks",audio:"five-oaks.mp3",cover:"five-oaks.jpg"},
+      {title:"Five Oaks Calling",audio:"five-oaks-calling.mp3",cover:"five-oaks-calling.jpg"},
+      {title:"Lantern Light Between Us",audio:"lantern-light-between-us.mp3",cover:"lantern-light-between-us.jpg"},
+      {title:"Little Prairie Fire",audio:"little-prairie-fire.mp3",cover:"little-prairie-fire.jpg"},
+      {title:"The Day I Found You",audio:"the-day-i-found-you.mp3",cover:"the-day-i-found-you.jpg"},
+      {title:"The Long Shot",audio:"the-long-shot.mp3",cover:"the-long-shot.jpg"},
+      {title:"The Long Way Forward",audio:"the-long-way-forward.mp3",cover:"the-long-way-forward.jpg"},
+      {title:"The Night Before Tomorrow",audio:"the-night-before-tomorrow.mp3",cover:"the-night-before-tomorrow.jpg"},
+      {title:"The Woman They Couldn't Ignore",audio:"the-woman-they-couldnt-ignore.mp3",cover:"the-woman-they-couldnt-ignore.jpg"},
+      {title:"Under The Five Oaks Sky",audio:"under-the-five-oaks-sky.mp3",cover:"under-the-five-oaks-sky.jpg"}
+    ];
+    const audio=document.getElementById("audio");
+    const cover=document.getElementById("cover");
+    const title=document.getElementById("title");
+    const position=document.getElementById("position");
+    const list=document.getElementById("songList");
+    const status=document.getElementById("status");
+    const playPause=document.getElementById("playPause");
+    let current=Number(localStorage.getItem("fiveOaksRadioTrack")||0);
+    if(!Number.isInteger(current)||current<0||current>=songs.length)current=0;
+
+    songs.forEach((song,index)=>{
+      const option=document.createElement("option");
+      option.value=String(index);
+      option.textContent=(index+1)+". "+song.title;
+      list.appendChild(option);
+    });
+
+    function mediaInfo(song){
+      if(!("mediaSession" in navigator))return;
+      navigator.mediaSession.metadata=new MediaMetadata({
+        title:song.title,
+        artist:"The World of Five Oaks",
+        album:"Five Oaks Radio",
+        artwork:[{src:new URL(song.cover,location.href).href,sizes:"512x512"}]
+      });
     }
 
-    document.getElementById('saveOpen').addEventListener('click',()=>{
-      const url=validUrl(); if(!url)return;
-      localStorage.setItem(key,url);
-      status.textContent='Opening the standalone Five Oaks Radio.';
-      window.open(url,'_blank','noopener');
-    });
+    function loadTrack(index,autoplay=false){
+      current=(index+songs.length)%songs.length;
+      const song=songs[current];
+      audio.src=song.audio;
+      cover.src=song.cover;
+      cover.alt=song.title+" cover";
+      title.textContent=song.title;
+      position.textContent="Song "+(current+1)+" of "+songs.length;
+      list.value=String(current);
+      localStorage.setItem("fiveOaksRadioTrack",String(current));
+      mediaInfo(song);
+      status.textContent="Ready to play “"+song.title+".”";
+      if(autoplay)audio.play().catch(()=>{status.textContent="Press Play to continue with “"+song.title+".”"});
+    }
 
-    document.getElementById('showInside').addEventListener('click',()=>{
-      const url=validUrl(); if(!url)return;
-      localStorage.setItem(key,url);
-      frame.src=url;
-      frame.style.display='block';
-      status.textContent='Five Oaks Radio is playing inside the companion app below.';
-    });
+    function toggle(){
+      if(audio.paused)audio.play().catch(()=>{status.textContent="Your phone blocked automatic playback. Press Play once more."});
+      else audio.pause();
+    }
 
-    document.getElementById('forget').addEventListener('click',()=>{
-      localStorage.setItem(key,defaultUrl); input.value=defaultUrl; frame.src=''; frame.style.display='none';
-      status.textContent='The radio address was reset.';
-    });
+    audio.addEventListener("play",()=>{playPause.textContent="❚❚ Pause";status.textContent="Playing “"+songs[current].title+".”"});
+    audio.addEventListener("pause",()=>{playPause.textContent="▶ Play"});
+    audio.addEventListener("ended",()=>loadTrack(current+1,true));
+    audio.addEventListener("error",()=>{status.textContent="That song could not load. Check your internet connection, then try again."});
+    playPause.addEventListener("click",toggle);
+    document.getElementById("previous").addEventListener("click",()=>loadTrack(current-1,true));
+    document.getElementById("next").addEventListener("click",()=>loadTrack(current+1,true));
+    list.addEventListener("change",()=>loadTrack(Number(list.value),true));
+
+    if("mediaSession" in navigator){
+      navigator.mediaSession.setActionHandler("play",()=>audio.play());
+      navigator.mediaSession.setActionHandler("pause",()=>audio.pause());
+      navigator.mediaSession.setActionHandler("previoustrack",()=>loadTrack(current-1,true));
+      navigator.mediaSession.setActionHandler("nexttrack",()=>loadTrack(current+1,true));
+    }
+    loadTrack(current);
   </script>
 </body>
 </html>
